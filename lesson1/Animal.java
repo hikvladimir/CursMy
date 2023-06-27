@@ -17,6 +17,8 @@ public class Animal {
     public void run(int distance) {
         if (distance<=MaxRun){
             System.out.println(type+" "+name+" успешно справился с кросом");
+        } else {
+            System.out.println(type+" "+name+" не справился с кросом");
         }
     }
 
