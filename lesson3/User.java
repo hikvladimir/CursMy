@@ -13,4 +13,7 @@ public class User implements Serializable {
         this.age = age;
         this.hobbes = hobbes;
     }
+    public String toString(){
+        return "Пользователь сименем "+name+" логином "+login ;
+    }
 }

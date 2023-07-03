@@ -1,6 +1,4 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -27,6 +25,20 @@ public class Main {
             oos.close();
 
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        try {
+            FileInputStream fis=new FileInputStream("prog.sir");
+            ObjectInputStream ois=new ObjectInputStream(fis);
+            User users=(User) ois.readObject();
+            System.out.println(users);
+
+            ois.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
