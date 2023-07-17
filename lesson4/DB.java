@@ -1,11 +1,9 @@
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class DB {
     private final String HOST="localhost";
     private final String PORT="3306";
-    private final String DB_NAME="java_db";
+    private final String DB_NAME="simple";
     private final String LOGIN="root";
     private final String PASS="12345";
     
@@ -21,5 +19,19 @@ public class DB {
     public void isConnected() throws SQLException, ClassNotFoundException {
         dbConn=getDbConnection();
         System.out.println(dbConn.isValid(1000));
+    }
+
+    public void getUser(String table) throws SQLException, ClassNotFoundException {
+        String sql="SELECT * FROM "+table+" WHERE `login` = 'john'";
+        Statement statement=getDbConnection().createStatement();
+        ResultSet res=statement.executeQuery(sql);
+        while (res.next()) {
+            System.out.print(res.getString("id"));
+            System.out.print(" ");
+            System.out.print(res.getString("login"));
+            System.out.print(" ");
+            System.out.println(res.getString("pass"));
+
+        }
     }
 }

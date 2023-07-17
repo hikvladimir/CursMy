@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         DB db= new DB();
         try {
-            db.isConnected();
+            db.getUser("users");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
