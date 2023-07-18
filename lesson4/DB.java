@@ -34,4 +34,13 @@ public class DB {
 
         }
     }
+    public void getItems (String table1) throws SQLException, ClassNotFoundException {
+        String sql="SELECT * FROM "+table1+" WHERE `category` = 'hats'";
+        Statement statement=getDbConnection().createStatement();
+        ResultSet res=statement.executeQuery(sql);
+        while (res.next()) {
+            System.out.println(res.getString("category"));
+        }
+
+    }
 }
